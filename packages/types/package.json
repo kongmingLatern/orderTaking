@@ -1,0 +1,15 @@
+{
+  "name": "@react18-vite-antd-ts/types",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@react18-vite-antd-ts/components": "workspace:*"
+  }
+}

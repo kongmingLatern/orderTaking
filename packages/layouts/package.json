@@ -1,0 +1,18 @@
+{
+  "name": "@react18-vite-antd-ts/layouts",
+  "version": "1.0.0",
+  "description": "react18-vite-antd-ts layouts",
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@react18-vite-antd-ts/axios": "workspace:*",
+    "@react18-vite-antd-ts/hooks": "workspace:*",
+    "@react18-vite-antd-ts/theme": "workspace:*",
+    "@react18-vite-antd-ts/types": "workspace:*"
+  }
+}
