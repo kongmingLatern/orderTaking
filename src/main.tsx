@@ -3,6 +3,7 @@ import { ConfigProvider } from 'antd'
 import zhCN from 'antd/locale/zh_CN'
 import ReactDOM from 'react-dom/client'
 import { RouterProvider } from 'react-router-dom'
+import { PermissionProvider } from './modules/OrderTaking/PermissionControl/PermissionContext'
 import router from './router'
 import 'uno.css'
 import './index.scss'
@@ -15,7 +16,9 @@ function App() {
       locale={zhCN}
       theme={theme}
     >
-      <RouterProvider router={router} />
+      <PermissionProvider initialRole="admin">
+        <RouterProvider router={router} />
+      </PermissionProvider>
     </ConfigProvider>
   )
 }

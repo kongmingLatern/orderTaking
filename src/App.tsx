@@ -1,11 +1,13 @@
-import { defaultTheme } from '@react18-vite-antd-ts/theme'
-import { ConfigProvider } from 'antd'
+import React from 'react'
+import { RouterProvider } from 'react-router-dom'
+import { PermissionProvider } from './modules/OrderTaking/PermissionControl/PermissionContext'
+import router from './router'
 
 function App() {
   return (
-    <ConfigProvider theme={defaultTheme}>
-      {/* 你的应用内容 */}
-    </ConfigProvider>
+    <PermissionProvider initialRole="admin">
+      <RouterProvider router={router} />
+    </PermissionProvider>
   )
 }
 

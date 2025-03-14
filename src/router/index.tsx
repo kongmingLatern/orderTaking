@@ -6,13 +6,52 @@ import { Error500 } from '../modules/Error/Error500'
 import { createHashRouter, Navigate } from 'react-router-dom'
 import Deepseek from '../modules/Deepseek'
 import Index from '../modules/Index/index'
+import Index1 from '../modules/Index/index1'
 import Login from '../modules/Login'
 import UserManagement from '../modules/System/UserManagement'
 import TabPage from '../modules/SystemFunction/TabPage'
+// Order Taking Platform
+import OrderTakingIndex from '../modules/Index/OrderTakingIndex'
+import AcceptedOrders from '../modules/OrderTaking/AcceptedOrders'
+import Marketplace from '../modules/OrderTaking/Marketplace'
+import MyPublishedOrders from '../modules/OrderTaking/MyPublishedOrders'
+import PersonalCenter from '../modules/OrderTaking/PersonalCenter'
+import UserRoleManagement from '../modules/OrderTaking/UserRoleManagement'
+// Permission Control
+import { PermissionRoute } from '../modules/OrderTaking/PermissionControl/PermissionContext'
 
 export const router = createHashRouter([
   {
     path: '/',
+    children: [
+      {
+        index: true,
+        element: <Navigate to="/home" replace />,
+      },
+      {
+        path: 'home',
+        element: <Index1 />,
+      },
+      {
+        path: 'accepted-orders',
+        element: <AcceptedOrders />,
+      },
+      {
+        path: 'my-published-orders',
+        element: <MyPublishedOrders />,
+      },
+      {
+        path: 'marketplace',
+        element: <Marketplace />,
+      },
+      {
+        path: 'personal-center',
+        element: <PersonalCenter />,
+      },
+    ],
+  },
+  {
+    path: '/admin',
     element: <AdminLayout />,
     // 重定向
     children: [
@@ -63,6 +102,31 @@ export const router = createHashRouter([
       {
         path: 'about',
         element: <UserManagement />,
+      },
+      // Order Taking Platform Routes
+      {
+        path: 'order-taking',
+        element: <OrderTakingIndex />,
+      },
+      {
+        path: 'order-taking/personal-center',
+        element: <PermissionRoute permission="view_personal_center" element={<PersonalCenter />} />,
+      },
+      {
+        path: 'order-taking/marketplace',
+        element: <PermissionRoute permission="view_marketplace" element={<Marketplace />} />,
+      },
+      {
+        path: 'order-taking/my-published-orders',
+        element: <PermissionRoute permission="publish_order" element={<MyPublishedOrders />} />,
+      },
+      {
+        path: 'order-taking/accepted-orders',
+        element: <PermissionRoute permission="accept_order" element={<AcceptedOrders />} />,
+      },
+      {
+        path: 'order-taking/user-role-management',
+        element: <PermissionRoute permission="manage_users" element={<UserRoleManagement />} />,
       },
     ],
   },
